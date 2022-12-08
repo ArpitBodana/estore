@@ -43,7 +43,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          "https://estore-mern-demo.herokuapp.com/api/products/categories"
+          "https://estore-backend.vercel.app/api/products/categories"
         );
         setCategories(data);
       } catch (error: any) {
