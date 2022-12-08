@@ -34,16 +34,20 @@ function Dashboard() {
     }
     return counter;
   };
+  const [productBar, setProductBar] = useState({});
+  const [catBar, setCatBar] = useState({});
 
   useEffect(() => {
     //@ts-ignore
     dispatch(getAdminData(user.access_token));
     const fetchCategories = async () => {
+      setProductBar([...products.map((x: any) => [x.name, x.countInStock])]);
       try {
         const { data } = await axios.get(
           "https://estore-backend.vercel.app/api/products/categories"
         );
         setCategories(data);
+        setCatBar([...categories.map((x: string) => [x, countCat(x)])]);
       } catch (error: any) {
         toast.error(error.response.data.message);
       }
