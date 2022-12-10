@@ -107,14 +107,15 @@ function Dashboard() {
           <Row>
             <Col md={6}>
               <Chart
-                chartType="PieChart"
+                chartType={"PieChart"}
                 data={[
                   ["Products", "CountInStock"],
                   ...products.map((x: any) => [x.name, x.countInStock]),
                 ]}
-                options={{ title: "Products" }}
+                options={{ title: "Products", is3D: true }}
                 width="100%"
                 height="400px"
+                loader={<LoadingSpinner />}
               />
             </Col>
             <Col md={6}>
@@ -124,9 +125,10 @@ function Dashboard() {
                   ["Category", "CountInStock"],
                   ...categories.map((x: string) => [x, countCat(x)]),
                 ]}
-                options={{ title: "Categories" }}
+                options={{ title: "Products", is3D: true }}
                 width="100%"
                 height="400px"
+                loader={<LoadingSpinner />}
               />
             </Col>
           </Row>
